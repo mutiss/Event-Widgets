@@ -17,7 +17,7 @@ public class RecyclerViewCustom extends RecyclerView {
     private float xDistance, yDistance, lastX, lastY;
 
     float initialY, finalY, initialX, finalX;
-    boolean isScrollingUp,isScrollingRight;
+    public boolean isScrollingUp,isScrollingRight;
 
     public RecyclerViewCustom(Context context) {
         super(context);
