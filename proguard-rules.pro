@@ -7,4 +7,6 @@
 -verbose
 -ignorewarnings
 
--keep class com.eventwidgets.** { !private <fields>; !protected <field>; !public <fields>; <methods>;}
+-keepclasseswithmembers class * {
+    !private <fields>;
+}
