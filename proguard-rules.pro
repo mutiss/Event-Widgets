@@ -9,4 +9,4 @@
 
 -keep class com.eventwidgets.** { *; }
 
--keepclassmembers class com.eventwidgets { !private <fields>; !protected <field>; !public <fields>; <methods>; }
+-keepclassmembers class com.eventwidgets.** { !private <fields>; !protected <field>; !public <fields>; <methods>; }
