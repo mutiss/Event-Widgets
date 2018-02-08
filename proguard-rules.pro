@@ -70,3 +70,33 @@
 
 -keep class com.eventwidgets.** { *; }
 -keepattributes Signature
+
+########### CONFIGURACION ESPECIFICA ###########
+-flattenpackagehierarchy
+-repackageclasses
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+-assumenosideeffects class android.util.Log {
+  public static *** d(...);
+  public static *** v(...);
+  public static *** i(...);
+  public static *** e(...);
+  public static *** w(...);
+  public static *** wtf(...);
+}
+
+-keep class android.support.v4.app.** { *; }
+-keep interface android.support.v4.app.** { *; }
+-keep class com.actionbarsherlock.** { *; }
+-keep interface com.actionbarsherlock.** { *; }
+# The support library contains references to newer platform versions.
+# Don't warn about those in case this app is linking against an older
+# platform version. We know about them, and they are safe.
+-dontwarn android.support.**
+-dontwarn com.google.ads.**
