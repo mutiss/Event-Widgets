@@ -67,3 +67,5 @@
 }
 
 -dontwarn android.support.**
+
+-keep class RecyclerViewCustom { public protected <methods>; }
