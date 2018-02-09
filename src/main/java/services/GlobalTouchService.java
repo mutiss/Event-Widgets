@@ -55,7 +55,7 @@ public class GlobalTouchService extends Service implements View.OnTouchListener 
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 LAYOUT_FLAG,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                 PixelFormat.TRANSLUCENT);
         mParams.gravity = Gravity.LEFT | Gravity.TOP;
         Log.i(TAG, "add View");
