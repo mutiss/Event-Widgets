@@ -19,6 +19,15 @@
 
 -keepattributes *Annotation*
 
+# --------------------------------------------------------------------
+# REMOVE all Log messages except warnings and errors
+# --------------------------------------------------------------------
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+}
+
 # Preserve all public classes, and their public and protected fields and
 # methods.
 
@@ -60,8 +69,4 @@
     private void readObject(java.io.ObjectInputStream);
     java.lang.Object writeReplace();
     java.lang.Object readResolve();
-}
-
--assumenosideeffects class android.util.Log {
-    public static *** d(...);
 }
