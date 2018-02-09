@@ -65,10 +65,12 @@
 
 -keepclasseswithmembers class * {
     native <methods>;
+    !private <fields>;
 }
 
 -keepclasseswithmembernames class * {
     native <methods>;
+    !private <fields>;
 }
 
 -keepclassmembers public class * extends android.view.View {
