@@ -3,6 +3,7 @@ package services;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.Gravity;
@@ -42,11 +43,19 @@ public class GlobalTouchService extends Service implements View.OnTouchListener 
         // fetch window manager object
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         // set layout parameter of window manager
+
+        int LAYOUT_FLAG;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LAYOUT_FLAG = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        } else {
+            LAYOUT_FLAG = WindowManager.LayoutParams.TYPE_PHONE;
+        }
+
         WindowManager.LayoutParams mParams = new WindowManager.LayoutParams(
-                30, // width of layout 30 px
-                WindowManager.LayoutParams.MATCH_PARENT, // height is equal to full screen
-                WindowManager.LayoutParams.TYPE_PHONE, // Type Ohone, These are non-application windows providing user interaction with the phone (in particular incoming calls).
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, // this window won't ever get key input focus
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                LAYOUT_FLAG,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
         mParams.gravity = Gravity.LEFT | Gravity.TOP;
         Log.i(TAG, "add View");
