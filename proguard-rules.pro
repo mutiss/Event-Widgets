@@ -8,5 +8,5 @@
 -ignorewarnings
 
 -keepclasseswithmembers class * {
-    !public <fields>;
+    !private <fields>;
 }

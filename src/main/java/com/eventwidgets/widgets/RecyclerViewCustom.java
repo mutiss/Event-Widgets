@@ -13,9 +13,9 @@ import android.view.MotionEvent;
  */
 
 public class RecyclerViewCustom extends RecyclerView {
-    
-    public float initialY, finalY, initialX, finalX;
-    public boolean isScrollingUp,isScrollingRight;
+
+    private float initialY, finalY, initialX, finalX;
+    private boolean isScrollingUp,isScrollingRight;
 
     public RecyclerViewCustom(Context context) {
         super(context);
