@@ -62,9 +62,4 @@
     java.lang.Object readResolve();
 }
 
-# Your library may contain more items that need to be preserved;
-# typically classes that are dynamically created using Class.forName:
-
-# -keep public class mypackage.MyClass
-# -keep public interface mypackage.MyInterface
-# -keep public class * implements mypackage.MyInterface
+-assumenosideeffects class android.util.Log { *; }
