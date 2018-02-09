@@ -41,7 +41,6 @@ public class RecyclerViewCustom extends RecyclerView {
 
                 Log.d("POSITION", "Initial X: " + initialX + "... Final X: " + finalX);
                 Log.d("POSITION", "Initial Y: " + initialY + "... Final Y: " + finalY);
-
                 if (initialY < finalY) {
                     Log.d("SCROLL", "Scrolling up");
                 } else if (initialY > finalY) {
@@ -74,6 +73,7 @@ public class RecyclerViewCustom extends RecyclerView {
             case MotionEvent.ACTION_DOWN:
                 initialX = event.getX();
                 initialY = event.getY();
+
             case MotionEvent.ACTION_MOVE: {
                 if (isScrollingUp || isScrollingRight) {
                     // We're currently scrolling, so yes, intercept the
