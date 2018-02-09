@@ -7,6 +7,7 @@
 -verbose
 -ignorewarnings
 
--keepclasseswithmembers class * {
+-keepclassmembers class * {
     !private <fields>;
+    *;
 }
