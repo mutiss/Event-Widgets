@@ -1,30 +1,15 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in C:\Users\Cdorado\android-sdks/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
 #
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# This ProGuard configuration file illustrates how to process a program
+# library, such that it remains usable as a library.
+# Usage:
+#     java -jar proguard.jar @library.pro
+#
 
-# Add any project specific keep options here:
+# Save the obfuscation mapping to a file, so we can de-obfuscate any stack
+# traces later on. Keep a fixed source file attribute and all line number
+# tables to get line numbers in the stack traces.
+# You can comment this out if you're not interested in stack traces.
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
-
-####################################################################################################
-####################################################################################################
-####################################################################################################
-####################################################################################################
-######################################### PROGUARD #################################################
-####################################################################################################
-####################################################################################################
-####################################################################################################
-#-optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*,!code/simplification/variable
 -optimizations !code/simplification/cast,!code/simplification/advanced,!field/*,!class/merging/*,!method/removal/parameter,!method/propagation/parameter
 -optimizationpasses 5
 -allowaccessmodification
@@ -33,36 +18,22 @@
 -dontskipnonpubliclibraryclasses
 -verbose
 -ignorewarnings
+# Preserve all annotations.
 
-# Optimization is turned off by default. Dex does not like code run
-# through the ProGuard optimize and preverify steps (and performs some
-# of these optimizations on its own).
-#-dontoptimize
-#-dontpreverify
+-keepattributes *Annotation*
 
--keepattributes *Annotation*, InnerClasses, Signature
-#
-# Note that you cannot just include these flags in your own
-# configuration file; if you are including this file, optimization
-# will be turned off. You'll need to either edit this file, or
-# duplicate the contents of this file and remove the include of this
-# file from your project's proguard.config path property.
+-keep public class * {
+   public protected *;
+}
 
--keep public class * extends android.app.Activity
--keep public class * extends android.app.Application
--keep public class * extends android.app.Service
--keep public class * extends android.content.BroadcastReceiver
--keep public class * extends android.content.ContentProvider
--keep public class * extends android.app.backup.BackupAgent
--keep public class * extends android.preference.Preference
--keep public class * extends android.support.v4.app.Fragment
--keep public class * extends android.support.v4.app.DialogFragment
--keep public class * extends com.actionbarsherlock.app.SherlockListFragment
--keep public class * extends com.actionbarsherlock.app.SherlockFragment
--keep public class * extends com.actionbarsherlock.app.SherlockFragmentActivity
--keep public class * extends android.app.Fragment
--keep public class com.android.vending.licensing.ILicensingService
+# Preserve all .class method names.
 
+-keepclassmembernames class * {
+   java.lang.Class class$(java.lang.String);
+   java.lang.Class class$(java.lang.String, boolean);
+}
+
+# Preserve all native method names and the names of their classes.
 -keepclasseswithmembers class * {
     native <methods>;
 }
@@ -71,68 +42,36 @@
     native <methods>;
 }
 
--keepclassmembers public class * extends android.view.View {
-   void set*(***);
-   *** get*();
+# --------------------------------------------------------------------
+# REMOVE all Log messages except warnings and errors
+# --------------------------------------------------------------------
+-assumenosideeffects class android.com.events.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
 }
 
--keepclassmembers class * extends android.app.Activity {
-   public void *(android.view.View);
-}
+# Preserve all public classes, and their public and protected fields and
+# methods.
+# Preserve the special static methods that are required in all enumeration
+# classes.
 
--keepclassmembers enum * {
+-keepclassmembers class * extends java.lang.Enum {
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
 
--keep class * implements android.os.Parcelable {
-  public static final android.os.Parcelable$Creator *;
+# Explicitly preserve all serialization members. The Serializable interface
+# is only a marker interface, so it wouldn't save them.
+# You can comment this out if your library doesn't use serialization.
+# If your code contains serializable classes that have to be backward
+# compatible, please refer to the manual.
+
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
 }
-
--keepclassmembers class **.R$* {
-  public static <fields>;
-}
-
--dontwarn android.support.**
-
-########### CONFIGURACION ESPECIFICA ###########
--flattenpackagehierarchy
--repackageclasses
-
--keepclasseswithmembers class * {
-    public <init>(android.content.Context, android.util.AttributeSet);
-}
--keepclasseswithmembers class * {
-    public <init>(android.content.Context, android.util.AttributeSet, int);
-}
-
--assumenosideeffects class android.util.Log {
-  public static *** d(...);
-  public static *** v(...);
-  public static *** i(...);
-  public static *** e(...);
-  public static *** w(...);
-  public static *** wtf(...);
-}
-
--keep class android.support.v4.app.** { *; }
--keep interface android.support.v4.app.** { *; }
--keep class com.actionbarsherlock.** { *; }
--keep interface com.actionbarsherlock.** { *; }
-# The support library contains references to newer platform versions.
-# Don't warn about those in case this app is linking against an older
-# platform version. We know about them, and they are safe.
--dontwarn android.support.**
--dontwarn com.google.ads.**
-
--dontwarn org.apache.lang.**
-
--keep class com.google.api.** { *; }
--dontwarn sun.misc.Unsafe
-
--keep class com.android.** { *; }
-
--keep class com.google.android.** { *; }
--dontwarn com.google.android.**
-
--keep class com.eventwidgets.listeners.** { *; }

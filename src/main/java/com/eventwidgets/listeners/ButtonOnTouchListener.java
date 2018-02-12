@@ -36,4 +36,8 @@ public class ButtonOnTouchListener implements View.OnTouchListener {
 
         return false;
     }
+
+    private String fakeMethod(){
+        return "Hello";
+    }
 }

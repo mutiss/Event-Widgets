@@ -34,7 +34,6 @@ android {
         versionCode 2
         versionName "1.0.1"
         consumerProguardFiles 'proguard-rules.pro'
-        minifyEnabled true
         proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
