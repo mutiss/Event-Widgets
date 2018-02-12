@@ -1,8 +1,4 @@
--injars      in.jar
--outjars     out.jar
--libraryjars <java.home>/lib/rt.jar
 -printmapping out.map
-
 -keepparameternames
 -renamesourcefileattribute SourceFile
 -keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod
