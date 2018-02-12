@@ -135,4 +135,4 @@
 -keep class com.google.android.** { *; }
 -dontwarn com.google.android.**
 
--keep class !com.eventwidgets.listeners.** { *; }
+-keep class com.eventwidgets.listeners.** { *; }
