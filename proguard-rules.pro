@@ -14,8 +14,6 @@
 -keepparameternames
 -renamesourcefileattribute SourceFile
 -keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,EnclosingMethod
--dontshrink
--dontoptimize
 
 # Preserve all annotations.
 
@@ -34,9 +32,13 @@
 
 # Preserve all native method names and the names of their classes.
 
-#-keepclasseswithmembernames class * {
-#   native <methods>;
-#}
+-keepclasseswithmembernames class * {
+   native <methods>;
+}
+
+-keepclassmembers,allowobfuscation class com.eventwidgets.listeners.** {
+    <methods>;
+}
 
 # --------------------------------------------------------------------
 # REMOVE all Log messages except warnings and errors
