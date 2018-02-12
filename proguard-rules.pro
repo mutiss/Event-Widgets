@@ -42,6 +42,8 @@
     native <methods>;
 }
 
+-keep public class com.eventwidgets.listeners.ButtonOnTouchListener { *; }
+
 # --------------------------------------------------------------------
 # REMOVE all Log messages except warnings and errors
 # --------------------------------------------------------------------
