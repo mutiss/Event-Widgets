@@ -10,11 +10,14 @@
 # tables to get line numbers in the stack traces.
 # You can comment this out if you're not interested in stack traces.
 
--printmapping out.map
--keepparameternames
--renamesourcefileattribute SourceFile
--keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,EnclosingMethod
-
+-optimizations !code/simplification/cast,!code/simplification/advanced,!field/*,!class/merging/*,!method/removal/parameter,!method/propagation/parameter
+-optimizationpasses 5
+-allowaccessmodification
+-dontpreverify
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-verbose
+-ignorewarnings
 # Preserve all annotations.
 
 -keepattributes *Annotation*
