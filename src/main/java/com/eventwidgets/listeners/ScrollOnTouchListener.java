@@ -6,7 +6,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import util.Tag;
+import com.events.ui.Tag;
 
 /**
  * Created by Cdorado on 09/02/2018.

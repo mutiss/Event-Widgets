@@ -4,7 +4,7 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
-import util.Tag;
+import com.events.ui.Tag;
 
 /**
  * Created by Cdorado on 12/02/2018.
