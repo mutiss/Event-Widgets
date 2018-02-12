@@ -32,9 +32,9 @@
 
 # Preserve all native method names and the names of their classes.
 
--keepclasseswithmembernames class * {
-   native <methods>;
-}
+#-keepclasseswithmembernames class * {
+#   native <methods>;
+#}
 
 # --------------------------------------------------------------------
 # REMOVE all Log messages except warnings and errors
