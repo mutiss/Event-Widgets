@@ -15,6 +15,11 @@ public class ButtonOnTouchListener implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        fakeMethod(v,event);
+        return false;
+    }
+
+    private void fakeMethod(View v, MotionEvent event){
         int action = MotionEventCompat.getActionMasked(event);
 
         switch (action) {
@@ -30,14 +35,6 @@ public class ButtonOnTouchListener implements View.OnTouchListener {
             case MotionEvent.ACTION_SCROLL:
                 Log.d(Tag.TRACK_TAP, "SCROLLING");
                 break;
-
-
         }
-
-        return false;
-    }
-
-    private String fakeMethod(){
-        return "Hello";
     }
 }
