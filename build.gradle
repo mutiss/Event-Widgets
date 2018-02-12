@@ -8,7 +8,7 @@ ext {
     libraryName = 'EventWidgets'
     artifact = 'eventwidgets'
 
-    libraryDescription = 'Library with many custom widgets'
+    libraryDescription = 'Library with many custom listeners'
 
     siteUrl = ''
     gitUrl = ''
