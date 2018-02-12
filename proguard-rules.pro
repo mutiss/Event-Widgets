@@ -31,13 +31,12 @@
 }
 
 # Preserve all native method names and the names of their classes.
-
--keepclasseswithmembernames class * {
-   native <methods>;
+-keepclasseswithmembers class * {
+    native <methods>;
 }
 
--keepclassmembers,allowobfuscation class com.eventwidgets.listeners.** {
-    <methods>;
+-keepclasseswithmembernames class * {
+    native <methods>;
 }
 
 # --------------------------------------------------------------------
