@@ -14,7 +14,7 @@ import util.Tag;
 public class ButtonOnTouchListener implements View.OnTouchListener {
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    private boolean onTouch(View v, MotionEvent event) {
         int action = MotionEventCompat.getActionMasked(event);
 
         switch (action) {
