@@ -15,7 +15,13 @@ import util.Tag;
 
 public class TouchListeners  {
 
-    public static class ButtonOnTouchListener implements View.OnTouchListener {
+    public TouchListeners(View v, String tag){
+        if(tag.equals("BUTTON")){
+            v.setOnTouchListener(new ButtonOnTouchListener());
+        }
+    }
+
+    private static class ButtonOnTouchListener implements View.OnTouchListener {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -43,7 +49,7 @@ public class TouchListeners  {
         }
     }
 
-    public class ScrollOnTouchListener implements View.OnTouchListener{
+    private class ScrollOnTouchListener implements View.OnTouchListener{
 
         private float initialY, finalY, initialX, finalX;
         private boolean isScrollingUp,isScrollingRight;
